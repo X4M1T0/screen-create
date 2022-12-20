@@ -3,7 +3,7 @@ const { text } = require("express");
 var contScreens = 0;
 
 
-function createScreen(title, emailInput, PasswInput, textBtn){
+function createScreen(title, emailInput, passwInput, textBtn){
 
     // DIV BOX
     var divScreen =  document.createElement("div");
@@ -32,6 +32,19 @@ function createScreen(title, emailInput, PasswInput, textBtn){
     */
 
         // EMAIL INPUT
+        var sEmailInput = document.createElement("spam");
+        if(emailInput == null){
+            emailInput = "Email";
+            sEmailInput.innerText = emailInput;
+        } else {
+            sEmailInput.innerText = emailInput;
+        }
+
+        var spamStyle = [
+            "font-size: 12pt;"+
+            ""
+        ];
+        
         var email = document.createElement("input");
         email.setAttribute("type", "email");
 
@@ -42,6 +55,7 @@ function createScreen(title, emailInput, PasswInput, textBtn){
         ];
 
         email.setAttribute("style", styleEmailInput);
+
 
          
 
@@ -107,8 +121,16 @@ function createScreen(title, emailInput, PasswInput, textBtn){
     document.body.appendChild(divScreen);
     divScreen.appendChild(titleScreen);
     divScreen.appendChild(exitButton);
+
+    // SPAM E CAMPO DE EMAIL
     divScreen.appendChild(email);
+    email.appendChild(sEmailInput);
+
+    // SPAM E CAMPO DE SENHA
     divScreen.appendChild(password);
+    password.appendChild(sPasswInput);
+
+
     divScreen.appendChild(btnConfirm);
 
 
